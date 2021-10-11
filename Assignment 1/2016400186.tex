@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+\usepackage{color}
+\usepackage{amsmath,amsthm,amssymb,multirow,paralist}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{geometry}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newgeometry{vmargin={10mm}, hmargin={12mm,17mm}}   % set the margins
+
+\begin{document}
+
+\framebox{\textbf{Student ID: 2016400186}} 
+\begin{center}
+\Large{\textbf{CMPE462 - Spring '20\\Linear Algebra Assessment Solutions}}
+\end{center}
+
+\begin{enumerate}
+
+\item (10 Points) \textbf{Solution 1}: 
+
+
+* $A = \begin{pmatrix} 1 & 2 \\ 2 & 4 \end{pmatrix} $  , since matrix A's columns are not linearly independent, we can write column space as, col(A) = $span(\begin{pmatrix} 1 \\ 2 \end{pmatrix})$ , which is a line in the form of $2x = y$
+
+* $B = \begin{pmatrix} 1 & 2 & 3\\ 0 & 0 & 4 \end{pmatrix} $  , since matrix B's columns are not linearly independent, we can see very clearly for columns 1 and 2, also after removing $3v_1$ from $v_3$ and divide $v_3$ by 4 we can write column space as, col(B) = $span(\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix})$ , which is xy-plane in $R^2$
+
+\item (10 points)
+\begin{itemize}
+    \item \textbf{Solution 2(a):} Yes, since with linear combination of any two vector in a line, you obtain a vector in that line. Also, it includes zero vector. It is a proper subspace.
+    \item \textbf{Solution 2(b):} No, if one uses a positive/negative multiplicand, ( sign depends on the quarter plane), resulting vector may not be in given space that is closure property may not hold.
+\end{itemize}
+
+
+\item (10 points) 
+\begin{itemize}
+    \item \textbf{Solution 3(a):}
+    
+    $v_2^T . v_1 =  \begin{pmatrix} 0 & 1 & 0 \end{pmatrix} . \begin{pmatrix} -2 \\ 0 \\ 1 \end{pmatrix} = 0$ \hspace{5mm} 
+    $v_2^T . v_3 =  \begin{pmatrix} 0 & 1 & 0 \end{pmatrix} . \begin{pmatrix} 2 \\ 0 \\ 4 \end{pmatrix} = 0$ \hspace{5mm} 
+    $v_1^T . v_3 =  \begin{pmatrix} -2 & 0 & 1 \end{pmatrix} . \begin{pmatrix} 2 \\ 0 \\ 4 \end{pmatrix} = 0$
+    All of them perpendicular to each other. Moreover, in order them to be orthonormal, their length should be 1. If we take $l_2 - norm$ of them respectively : $( \sqrt{5}, 1, \sqrt{20} )$, which are not orthonormal
+    
+    \item \textbf{Solution 3(b):}
+    
+    
+    If we divide them by their $l_2 - norm$, we can obtain orthonormal set.
+    
+    $v_1^{'} = \begin{pmatrix} -2/\sqrt{5} \\ 0 \\ 1/\sqrt{5} \end{pmatrix}$ \hspace{5mm} $v_2^{'} = v_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$ \hspace{5mm} $v_3^{'} = \begin{pmatrix} 2/\sqrt{20} \\ 0 \\ 4/\sqrt{20} \end{pmatrix}$
+\end{itemize}
+
+
+\item (10 points) \textbf{Solution 4:}
+
+$\begin{pmatrix} a \\ b \\ c \\ . \\ . \end{pmatrix}_{mx1} \begin{pmatrix} x & y & z & . & . \end{pmatrix}_{1xn} = \begin{pmatrix} x (\begin{pmatrix} a \\ b \\ c \\ . \\ . \end{pmatrix}) & y (\begin{pmatrix} a \\ b \\ c \\ . \\ . \end{pmatrix}) & z (\begin{pmatrix} a \\ b \\ c \\ . \\ . \end{pmatrix}) & . & . \end{pmatrix}_{mxn}$ whose rank is 1.
+
+\newpage
+
+\item (10 points) \textbf{Solution 5:}
+
+\textbf{First} we find general formula for any coordinate on matrix (XY), which can be found by : $i^{th}$ row on X, multiplied with $j^{th}$ column of Y respectively and added respectively.
+
+$c_{ij} = \sum_{k=1}^m a_{ik} . b_{kj}$.
+
+
+\textbf{Second}, we need to check if given hand side summation is equal to the calculated formula or not. To do this, we can calculate any (i,j) coordinate by expanding the summation and can write its general formula to see if "First" one and this one verifies each other.
+
+Example to find general formula of right hand side, using point (1,1) : 
+
+for $c_{11} = x_{11}.y_{11} + x_{12}.y_{21}+ x_{13}.y_{31}$ ...
+We can see the pattern on example which is $c_{ij} = \sum_{k=1}^m a_{ik} . b_{kj}$ which is the same as our first found result above.
+
+Therefore, we can say that every element in resulted matrix is the same for right hand side notation.
+
+\textbf{There can be an easier way to show this equality.}
+
+\item (10 points) \textbf{Solution 6:}
+
+\textbf{a)}
+
+$(X^T X )^T = X^T X $, holds if its symmetric. If we distribute and apply transpose rule:
+
+$X^T (X^T)^T = X^T X$ which shows that it is symmetric.
+
+Then, $X^T X$ is positive semi definite if and only if $k^T (X^T X )k \geq 0 $ for any k $\varepsilon$ $R^d$ by definition. We can turn this inequality into $(Xk)^T Xk \geq 0$, which can also be written as:
+
+$|| Xk ||^2_2 \geq 0$, that is a always greater than or equal to 0 because of the square, so $X^T X$ is positive semi definite.
+
+\textbf{b)}
+
+To be able for it to be positive definite, $k^T (X^T X) k > 0$ for any k vector which is not zero.(Definition)
+
+Above expression can be written as $(Xk)^T Xk > 0$, if we turn it into l-2 norm. $|| Xk ||^2 > 0$, which means that result of (Xk) should not be zero vector. It can be zero vector in 2 ways. One is that k becomes zero vector which is not allowed in definition. Second is X's columns are not linearly independent that is singular. By second, we can say that it is positive definite if X's all columns are linearly independent.
+
+\item (15 points) 
+\begin{itemize}
+    \item (5 points) \textbf{Solution 7(a)}
+    
+    Because in order to be able to take inverse of a matrix, it should be full rank which means non-singular. Otherwise, we cannot take its inverse and calculate result c.
+    \item (10 points) \textbf{Solution 7(b)}
+    
+    Identity matrix is a full rank matrix, in other words, it includes all vectors in its space. If we add Identity matrix to another low rank matrix, it turns low rank into full rank matrix. 
+    After this operation, inverse of it can be taken.
+\end{itemize} 
+
+\item (25 points) \textbf{Solution 8:}
+
+The point y is a 1-d point valued 1.1. If we take $l_2 - norm$  of (x - 1.1) and square it, result becomes $x^2 - 2.2x + 1.21$ which comes from $(x - 1.1)^T (x - 1.1)$. The value that gives optimal value is 1.1 but we need a natural number that optimizes best. Therefore, our solution of x* is 1.
+
+\end{enumerate}
+
+\end{document}
